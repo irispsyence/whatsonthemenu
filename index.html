@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TODO: Add page title before launch -->
+  <title>What's on the Menu?</title>
+  <!-- TODO: Add meta description before launch -->
+  <!-- <meta name="description" content=""> -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+  <nav>
+    <a href="#hero" class="nav-brand">What's on the Menu?</a>
+    <button class="hamburger" aria-expanded="false" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#breads">Breads</a></li>
+      <li><a href="#pastries">Pastries</a></li>
+      <li><a href="#cakes">Cakes</a></li>
+      <li><a href="#seasonal">Seasonal</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#find-us">Find Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <img src="images/hero/logo.png" alt="What's on the Menu? bakery logo" class="hero-logo">
+    <h1>What's on the Menu?</h1>
+    <p class="tagline">Handmade breads and pastries, baked with love.</p>
+  </section>
+
+  <div id="main-content">
+
+    <section id="breads" class="menu-category">
+      <div class="section-divider"></div>
+      <h2>Breads</h2>
+      <p class="category-description">Our rustic loaves and artisan breads, baked fresh each week.</p>
+      <div class="slideshow" data-category="breads" role="region" aria-label="Breads photo slideshow">
+        <button class="arrow prev" aria-label="Previous photo">&#8592;</button>
+        <div class="slides">
+          <!-- JS populates slide images from manifest.json -->
+        </div>
+        <button class="arrow next" aria-label="Next photo">&#8594;</button>
+        <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+      </div>
+    </section>
+
+    <section id="pastries" class="menu-category">
+      <div class="section-divider"></div>
+      <h2>Pastries</h2>
+      <p class="category-description">Flaky, buttery pastries made from scratch every morning.</p>
+      <div class="slideshow" data-category="pastries" role="region" aria-label="Pastries photo slideshow">
+        <button class="arrow prev" aria-label="Previous photo">&#8592;</button>
+        <div class="slides">
+          <!-- JS populates slide images from manifest.json -->
+        </div>
+        <button class="arrow next" aria-label="Next photo">&#8594;</button>
+        <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+      </div>
+    </section>
+
+    <section id="cakes" class="menu-category">
+      <div class="section-divider"></div>
+      <h2>Cakes</h2>
+      <p class="category-description">Celebration cakes and everyday treats, made to order.</p>
+      <div class="slideshow" data-category="cakes" role="region" aria-label="Cakes photo slideshow">
+        <button class="arrow prev" aria-label="Previous photo">&#8592;</button>
+        <div class="slides">
+          <!-- JS populates slide images from manifest.json -->
+        </div>
+        <button class="arrow next" aria-label="Next photo">&#8594;</button>
+        <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+      </div>
+    </section>
+
+    <section id="seasonal" class="menu-category">
+      <div class="section-divider"></div>
+      <h2>Seasonal</h2>
+      <p class="category-description">What's fresh and special right now — changes with the season.</p>
+      <div class="slideshow" data-category="seasonal" role="region" aria-label="Seasonal photo slideshow">
+        <button class="arrow prev" aria-label="Previous photo">&#8592;</button>
+        <div class="slides">
+          <!-- JS populates slide images from manifest.json -->
+        </div>
+        <button class="arrow next" aria-label="Next photo">&#8594;</button>
+        <div class="dots" role="tablist" aria-label="Slide indicators"></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-divider"></div>
+      <h2>About</h2>
+      <p>Placeholder — about the bakery and baker. Copy to be confirmed with baker before launch.</p>
+    </section>
+
+    <section id="find-us">
+      <div class="section-divider"></div>
+      <h2>Find Us</h2>
+      <ul class="market-schedule">
+        <li>
+          <strong>Placeholder Market</strong><br>
+          123 Market St — Saturdays, 8am–1pm
+        </li>
+        <li>
+          <strong>Placeholder Market 2</strong><br>
+          456 Main Ave — Sundays, 9am–2pm
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <div class="section-divider"></div>
+      <h2>Contact</h2>
+
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <p class="hidden">
+          <label>Don't fill this out: <input name="bot-field"></label>
+        </p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+
+      <div class="social-links">
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <!-- Instagram SVG icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Social media (placeholder)">
+          <!-- Spare social icon placeholder -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+      </div>
+
+    </section>
+
+  </div><!-- /#main-content -->
+
+</body>
+</html>
