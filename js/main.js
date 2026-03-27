@@ -181,12 +181,44 @@ function initContactForm() {
 }
 
 // =============================================================================
+// SCROLL REVEAL & SECTION DIVIDERS
+// =============================================================================
+function initScrollReveal() {
+  // Fallback for browsers without IntersectionObserver — show everything immediately
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('#main-content > section').forEach(section => {
+      section.classList.add('visible');
+      const divider = section.querySelector('.section-divider');
+      if (divider) divider.classList.add('visible');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const section = entry.target;
+      section.classList.add('visible');
+      const divider = section.querySelector('.section-divider');
+      if (divider) divider.classList.add('visible');
+      observer.unobserve(section);
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('#main-content > section').forEach(section => {
+    observer.observe(section);
+  });
+}
+
+// =============================================================================
 // INIT
 // =============================================================================
 // scroll-behavior: smooth is handled by CSS — no JS needed for anchor links
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('hero').classList.add('hero-loaded');
   initNav();
   document.querySelectorAll('.slideshow[data-category]').forEach(initSlideshow);
   initContactForm();
+  initScrollReveal();
 });

@@ -33,10 +33,10 @@
   --color-tan-light:   #F9F3EC;
 
   /* Pastel accents — decorative only, never used for text or interactive elements */
-  --color-yellow:   #FFED7B;
+  --color-yellow:   #FFF238;
   --color-blue:     #67BDFF;
-  --color-lavender: #D8ACFF;
-  --color-mint:     #C0FFB6;
+  --color-lavender: #C88FEF;
+  --color-sage:     #769E67;
 
   /* Typography */
   --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -310,7 +310,6 @@ nav.nav-open .nav-links {
   background: linear-gradient(to right, transparent, var(--color-brown-light), transparent);
   margin: 0 auto var(--space-md);
   transform-origin: center;
-  /* Phase 4 will add: transform: scaleX(0) and transition for the draw-in effect */
 }
 
 /* =============================================================================
@@ -343,7 +342,14 @@ p {
 .slideshow {
   position: relative;
   width: 100%;
+  border-top: 3px solid var(--color-brown-light);
+  border-radius: 12px;
 }
+
+#breads   .slideshow { border-top-color: var(--color-yellow); }
+#pastries .slideshow { border-top-color: var(--color-blue); }
+#cakes    .slideshow { border-top-color: var(--color-lavender); }
+#seasonal .slideshow { border-top-color: var(--color-sage); }
 
 /* Photo display area */
 .slides {
@@ -362,11 +368,13 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .slides img.active {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Arrow buttons */
@@ -679,4 +687,83 @@ form button[type="submit"] {
     align-self: flex-start;
     min-width: 160px;
   }
+}
+
+/* =============================================================================
+   ANIMATIONS
+   All animations and transitions live here, wrapped in prefers-reduced-motion.
+   Under prefers-reduced-motion: reduce — all animations are disabled.
+   Everything remains fully functional; slideshows still work (instant changes).
+   ============================================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ── Hero load animation ──────────────────────────────────────────────────── */
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Elements start invisible — JS adds .hero-loaded to #hero on DOMContentLoaded */
+  .hero-logo,
+  #hero h1,
+  .tagline {
+    opacity: 0;
+  }
+
+  #hero.hero-loaded .hero-logo {
+    animation: heroFadeUp 0.6s ease both;
+    animation-delay: 0s;
+  }
+
+  #hero.hero-loaded h1 {
+    animation: heroFadeUp 0.6s ease both;
+    animation-delay: 0.15s;
+  }
+
+  #hero.hero-loaded .tagline {
+    animation: heroFadeUp 0.6s ease both;
+    animation-delay: 0.3s;
+  }
+
+  /* ── Scroll reveal ────────────────────────────────────────────────────────── */
+
+  /* Sections start hidden — JS adds .visible via IntersectionObserver */
+  #main-content > section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  #main-content > section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Section dividers draw in ─────────────────────────────────────────────── */
+
+  .section-divider {
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+  }
+
+  .section-divider.visible {
+    transform: scaleX(1);
+  }
+
+  /* ── (breathing pastel accents removed) ──────────────────────────────────── */
+
+  /* ── Slideshow flip transition ────────────────────────────────────────────── */
+
+  @keyframes slideFlipIn {
+    from { transform: perspective(600px) rotateY(90deg); opacity: 0; }
+    to   { transform: perspective(600px) rotateY(0deg);  opacity: 1; }
+  }
+
+  /* Plays whenever .active is applied to a slide image */
+  .slides img.active {
+    animation: slideFlipIn 0.2s ease-out both;
+  }
+
 }
