@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "src": "images/breads/cinnamon_swirl.jpg",
+    "alt": "Cinnamon Swirl"
+  },
+  {
+    "src": "images/breads/kaiser_rolls.jpg",
+    "alt": "Kaiser Rolls"
+  }
+]
