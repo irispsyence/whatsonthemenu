@@ -255,7 +255,7 @@ nav.nav-open .nav-links {
 #hero h1 {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 6vw, 3.5rem);
-  color: var(--color-tan-light);
+  color: var(--color-lavender);
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
   line-height: 1.2;
 }
@@ -263,7 +263,7 @@ nav.nav-open .nav-links {
 .tagline {
   font-family: var(--font-body);
   font-size: clamp(1rem, 3vw, 1.25rem);
-  color: var(--color-tan);
+  color: var(--color-lavender);
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
 }
 
@@ -342,14 +342,7 @@ p {
 .slideshow {
   position: relative;
   width: 100%;
-  border-top: 3px solid var(--color-brown-light);
-  border-radius: 12px;
 }
-
-#breads   .slideshow { border-top-color: var(--color-yellow); }
-#pastries .slideshow { border-top-color: var(--color-blue); }
-#cakes    .slideshow { border-top-color: var(--color-lavender); }
-#seasonal .slideshow { border-top-color: var(--color-sage); }
 
 /* Photo display area */
 .slides {
