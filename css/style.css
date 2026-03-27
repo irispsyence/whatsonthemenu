@@ -254,17 +254,17 @@ nav.nav-open .nav-links {
 
 #hero h1 {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
   color: var(--color-lavender);
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.30);
   line-height: 1.2;
 }
 
 .tagline {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   color: var(--color-lavender);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.30);
 }
 
 /* =============================================================================
@@ -754,9 +754,17 @@ form button[type="submit"] {
     to   { transform: translateX(0);    opacity: 1; }
   }
 
-  /* Plays whenever .active is applied to a slide image */
+  @keyframes slidePageOut {
+    from { transform: translateX(0);     opacity: 1; }
+    to   { transform: translateX(-40px); opacity: 0; }
+  }
+
   .slides img.active {
     animation: slidePageIn 1.2s ease both;
+  }
+
+  .slides img.slide-out {
+    animation: slidePageOut 1.2s ease both;
   }
 
 }

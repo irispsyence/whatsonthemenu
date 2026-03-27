@@ -68,14 +68,27 @@ function initSlideshow(container) {
   let currentIndex = 0;
 
   function showSlide(index) {
-    images.forEach((img, i) => {
-      img.classList.toggle('active', i === index);
-    });
+    const outgoing = images[currentIndex];
+    const incoming = images[index];
+
+    // If incoming was mid-slide-out, cancel it before sliding in
+    incoming.classList.remove('slide-out');
+
+    // Slide outgoing left and out, then remove its classes
+    outgoing.classList.add('slide-out');
+    outgoing.addEventListener('animationend', () => {
+      outgoing.classList.remove('active', 'slide-out');
+    }, { once: true });
+
+    // Slide incoming in from right
+    incoming.classList.add('active');
+
     dotsEl.querySelectorAll('.dot').forEach((dot, i) => {
       const isActive = i === index;
       dot.classList.toggle('active', isActive);
       dot.setAttribute('aria-selected', String(isActive));
     });
+
     currentIndex = index;
   }
 
